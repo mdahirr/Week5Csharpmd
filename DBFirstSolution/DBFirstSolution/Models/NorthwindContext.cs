@@ -23,7 +23,7 @@ public partial class NorthwindContext : DbContext
 
     public virtual DbSet<CurrentProductList> CurrentProductLists { get; set; }
 
-    public virtual DbSet<Customer> Spartan { get; set; }
+    public virtual DbSet<Customer> Customers { get; set; }
 
     public virtual DbSet<CustomerAndSuppliersByCity> CustomerAndSuppliersByCities { get; set; }
 
