@@ -103,13 +103,13 @@ namespace LINQQuerySyntax
 
             #region method syntax
 
-            var studentQuery6 =
-                from student in students
-                let totalScore = student.Scores[0] + student.Scores[1] + student.Scores[2] + student.Scores[3]
-                select totalScore;
+            //var studentQuery6 =
+            //    from student in students
+            //    let totalScore = student.Scores[0] + student.Scores[1] + student.Scores[2] + student.Scores[3]
+            //    select totalScore;
 
-            double averageScore = studentQuery6.Average();
-            Console.WriteLine("Class average score = {0}", averageScore);
+            //double averageScore = studentQuery6.Average();
+            //Console.WriteLine("Class average score = {0}", averageScore);
             #endregion
 
             #region transform or project in the select clause
@@ -128,16 +128,16 @@ namespace LINQQuerySyntax
             #endregion
 
             #region studentID with greater than average test scores
-            var studentQuery8 =
-                from student in students
-                let x = student.Scores[0] + student.Scores[1] + student.Scores[2] + student.Scores[3]
-                where x > averageScore
-                select new { id = student.ID, score = x };
+            //var studentQuery8 =
+            //    from student in students
+            //    let x = student.Scores[0] + student.Scores[1] + student.Scores[2] + student.Scores[3]
+            //    where x > averageScore
+            //    select new { id = student.ID, score = x };
 
-            foreach (var item in studentQuery8)
-            {
-                Console.WriteLine("Student ID: {0}, Score: {1}", item.id, item.score);
-            }
+            //foreach (var item in studentQuery8)
+            //{
+            //    Console.WriteLine("Student ID: {0}, Score: {1}", item.id, item.score);
+            //}
             #endregion
         }
 

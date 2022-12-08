@@ -1,4 +1,5 @@
-﻿using NorthwindData.Models;
+﻿using NorthwindData;
+using NorthwindData.Models;
 
 using (var db = new NorthwindContext())
 {
@@ -86,20 +87,93 @@ using (var db = new NorthwindContext())
     //    Console.WriteLine($"{product.ProductId} - {product.UnitPrice:C}");
     //}
 
-    var groupProductsByUnitInStockQuery =
-    from p in db.Products
-    group p by p.SupplierId into newGroup
+    //var groupProductsByUnitInStockQuery =
+    //from p in db.Products
+    //group p by p.SupplierId into newGroup
 
-    select new
+    //select new
+    //{
+    //    SupplierID = newGroup.Key,
+    //    UnitsInStock = newGroup.Sum(c => c.UnitsInStock)
+    //};
+
+
+    //foreach (var result in groupProductsByUnitInStockQuery)
+    //{
+    //    Console.WriteLine(result);
+    //}
+    #endregion
+
+    #region LINQ method syntax
+
+    //var query1 =
+    //    from c in db.Customers
+    //    where c.City == "London"
+    //    orderby c.ContactName
+    //    select c;
+
+    //var query = db.Customers
+    //    .Where(c => c.City == "London")
+    //    .OrderBy(c => c.ContactName); 
+    #endregion
+
+    #region LINQ method syntax
+
+    //var query = db.Customers
+    //    .Where(c => c.City == "London" || c.City == "Berlin")
+    //    .OrderBy(c => c.ContactName)
+    //    .Select(c => new { Name = c.ContactName, City = c.City });
+
+    ////Console.WriteLine(query);
+
+    //foreach (var customer in query)
+    //{
+    //    Console.WriteLine(customer.Name);
+    //}
+
+    var query3 = db.Products
+        .OrderBy(c => c.QuantityPerUnit)
+        .ThenByDescending(c => c.ReorderLevel);
+
+    foreach (var s in query3)
     {
-        SupplierID = newGroup.Key,
-        UnitsInStock = newGroup.Sum(c => c.UnitsInStock)
-    };
-
-
-    foreach (var result in groupProductsByUnitInStockQuery)
-    {
-        Console.WriteLine(result);
+        Console.WriteLine("QPU: {0}, RL: {1}", s.QuantityPerUnit, s.ReorderLevel);
     }
+
     #endregion
 }
+
+//var nums = new List<int> { 3, 7, 1, 2, 8, 3, 0, 4, 5 };
+//Console.WriteLine(nums.Count(IsEven));
+//var numsQuery = nums.Count(n => n % 2 == 0);
+//var numsQuery2 = nums.Count(n => n % 2 != 0);
+//var numsQuery3 = nums.Count(n => n <= 4);
+
+//Console.WriteLine(numsQuery);
+//Console.WriteLine(numsQuery2);
+//Console.WriteLine(numsQuery3);
+
+//List<Person> people = new List<Person>
+//{
+//    new Person { Name = "Fred", Age = 22 },
+//    new Person { Name = "Bernard", Age = 35 },
+//    new Person { Name = "Margaret", Age = 54 }
+//};
+
+//var personQuery = people.Where<Person>(p => p.Age <= 30);
+
+//Console.WriteLine(personQuery);
+
+//Console.WriteLine("Delegate: " + 
+//    nums.Count(
+//        delegate (int n) 
+//        { 
+//            return n % 2 == 0; 
+//        }));
+
+//static bool IsEven(int n)
+//{
+//    return n % 2 == 0;
+//}
+
+//static bool IsEven(int x) => x % 2 == 0;
