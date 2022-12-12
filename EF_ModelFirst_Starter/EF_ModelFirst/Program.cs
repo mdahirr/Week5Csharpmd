@@ -15,6 +15,30 @@ namespace EF_ModelFirst
                 cust.ContactName = "Mo";
                 cust.City = "London";
                 cust.PostalCode= "ab12cd";
+
+                Customer cust2 = new Customer();
+                cust.CustomerId = "2";
+                cust.ContactName = "Phil";
+                cust.City = "London";
+                cust.PostalCode = "ab34cd";
+                
+                Customer cust3 = new Customer();
+                cust.CustomerId = "3";
+                cust.ContactName = "hamza";
+                cust.City = "London";
+                cust.PostalCode = "ab56cd";
+                
+                Customer cust4 = new Customer();
+                cust.CustomerId = "4";
+                cust.ContactName = "rida";
+                cust.City = "London";
+                cust.PostalCode = "ab78cd"; 
+                
+                Customer cust5 = new Customer();
+                cust.CustomerId = "5";
+                cust.ContactName = "sjad";
+                cust.City = "London";
+                cust.PostalCode = "ab90cd";
             }
         }
     }
