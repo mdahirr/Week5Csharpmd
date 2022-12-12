@@ -1,31 +1,45 @@
 ﻿using System;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace AysncCake
 {
     class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             Console.WriteLine("Welcome to my birthday party");
-            HaveAParty();
+            await HaveAPartyAsync();
             Console.WriteLine("Thanks for a lovely party");
             Console.ReadLine();
         }
 
-        private static void HaveAParty()
+        private static async Task HaveAPartyAsync()
         {
             var name = "Cathy";
-            var cake = BakeCake();
+            var cakeTask = BakeCakeAsync();
+            var pizzaTask = OrderPizzaAsync();
             PlayPartyGames();
             OpenPresents();
-            Console.WriteLine($"Happy birthday, {name}, {cake}!!");
+            var pizza = pizzaTask.Result;
+            var cake = cakeTask.Result;
+            
+            Console.WriteLine($"Happy birthday, {name}, {cake} & your {pizza}!!");
         }
 
-        private static Cake BakeCake()
+        private static async Task<Pizza> OrderPizzaAsync()
+        {
+            Console.WriteLine("Pizza ordered!");
+            await Task.Delay(TimeSpan.FromSeconds(4));
+            Console.WriteLine("Pizza is delivered");
+            Console.WriteLine("Enjoy your pizza!");
+            return new Pizza();
+
+        }
+        private static async Task<Cake> BakeCakeAsync()
         {
             Console.WriteLine("Cake is in the oven");
-            Thread.Sleep(TimeSpan.FromSeconds(5));
+            await Task.Delay(TimeSpan.FromSeconds(5));
             Console.WriteLine("Cake is done");
             return new Cake();
         }
@@ -50,6 +64,14 @@ namespace AysncCake
         public override string ToString()
         {
             return "Here's a cake";
+        }
+    }
+
+    public class Pizza
+    {
+        public override string ToString()
+        {
+            return "pizza";
         }
     }
 }
