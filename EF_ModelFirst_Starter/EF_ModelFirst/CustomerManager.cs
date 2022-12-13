@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EF_ModelFirst
 {
-    internal class CustomerClass
+    internal class CustomerManager
     {
         public static void Read()
         {
