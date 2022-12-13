@@ -14,7 +14,7 @@ namespace EF_ModelFirst
             {
                 foreach (var customer in db.Customers)
                 {
-                    Console.WriteLine($"ID: {customer.CustomerId}, Contact name: {customer.ContactName}, City: {customer.City}1");
+                    Console.WriteLine($"ID: {customer.CustomerId}, Contact name: {customer.ContactName}, City: {customer.City}");
                 }
             }
         }
@@ -42,7 +42,11 @@ namespace EF_ModelFirst
 
         public static void Delete(Customer customer) 
         {
-            
+            using (var db = new SouthwindContext())
+            {
+                db.Customers.Remove(customer);
+                db.SaveChanges();
+            }
         }
     }
 }
