@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bookstore>
+  <book>
+    <title>1984</title>
+    <author>George Orwell</author>
+    <year>1949</year>
+    <price>12.99</price>
+  </book>
+  <book>
+    <title>Pride and Prejudice</title>
+    <author>Jane Austen</author>
+    <year>1813</year>
+    <price>14.99</price>
+  </book>
+</bookstore>
